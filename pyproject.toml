@@ -11,3 +11,7 @@ where = ["src"]
 
 [tool.ruff]
 line-length = 100
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = ["-q", "--tb=no"]
