@@ -4,17 +4,23 @@
 
 ## Phase 0: Foundation (Completed)
 - Master Prompt established and locked
-- Repository initialized with governance
-- Initial README + connection test
+- Repository initialized
+- Initial documents (README, LANGUAGE-SPEC, ROADMAP)
 
 ## Phase 1: Core Syntax & Parser (In Progress)
-- Formal language specification (LANGUAGE-SPEC.md)
-- Minimal viable syntax
-- REPL + lexer (functional)
-- Parser (basic → being upgraded to recursive descent)
-- Living test suite
+- Lexer with unit support
+- Parser + AST nodes
+- Basic interpreter / evaluator
+- REPL with live execution
+- **Next:** Expand `simulate` and `probability` primitives
 
 ## Phase 2: AI-Native Features
-...
+- Native tool calling to Grok
+- Bayesian/probabilistic programming
+- Automatic differentiation
 
-Progress measured against Success Criteria in the Master Prompt.
+## Phase 3: Universe Primitives
+- Physical units & dimensions engine
+- High-performance simulation
+
+Progress is being made autonomously under the Master Prompt.

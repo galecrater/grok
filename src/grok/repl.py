@@ -1,33 +1,29 @@
-# Grok Language REPL
+from .lexer import Lexer
+from .parser import Parser
+from .interpreter import Interpreter
 
-from .lexer import tokenize
+def run_repl():
+    print("Grok REPL (v0.1-alpha) — the programming language that understands the universe")
+    print("Type 'exit' or Ctrl+D to quit\n")
 
-def start_repl():
-    print("Grok Language REPL v0.1.0")
-    print("The programming language that understands the universe.")
-    print("Type 'exit' or Ctrl+C to quit.\n")
-    
+    interpreter = Interpreter()
+    lexer = Lexer()
+    parser = Parser()
+
     while True:
         try:
             line = input("grok> ")
             if line.strip().lower() in ['exit', 'quit']:
                 print("Goodbye!")
                 break
-            
-            if line.strip():
-                print(f"→ {line}")
-                tokens = tokenize(line)
-                print("Tokens:")
-                for token in tokens:
-                    print(f"   {token}")
-                print("─" * 40)
-                # TODO: Pass tokens to parser in future steps
-                
-        except KeyboardInterrupt:
-            print("\nExiting...")
-            break
+            if not line.strip():
+                continue
+
+            tokens = lexer.tokenize(line)
+            ast = parser.parse(tokens)
+            result = interpreter.interpret(ast)
+            if result:
+                for r in result:
+                    print(f"→ {r}")
         except Exception as e:
             print(f"Error: {e}")
-
-if __name__ == "__main__":
-    start_repl()
