@@ -1,5 +1,5 @@
 from .lexer import Lexer
-from .parser import Parser
+from .parser import parse
 from .interpreter import Interpreter
 
 def start_repl():
@@ -18,11 +18,10 @@ def start_repl():
             
             lexer = Lexer(code)
             tokens = lexer.tokenize()
-            parser = Parser(tokens)
-            ast = parser.parse()
+            ast_nodes = parse(tokens)
             
             print('→ Parsed successfully')
-            interpreter.execute(ast)
+            interpreter.execute(ast_nodes)
             
         except Exception as e:
             print(f'Error: {e}')

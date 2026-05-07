@@ -17,7 +17,7 @@ class Token:
         return f"Token({self.type})"
 
 # Token types
-KEYWORDS = {'let', 'if', 'else', 'for', 'while', 'simulate', 'observe', 'probability', 'grok'}
+KEYWORDS = {'let', 'if', 'else', 'for', 'while', 'simulate', 'observe', 'probability', 'grok', 'print'}
 
 TOKEN_PATTERNS = [
     (r'\s+', None),  # whitespace
@@ -31,43 +31,47 @@ TOKEN_PATTERNS = [
     (r"'[^']*'", 'STRING'),
 ]
 
-def tokenize(code: str) -> List[Token]:
-    '''Tokenize Grok source code'''
-    tokens = []
-    line_num = 1
-    pos = 0
-    code_length = len(code)
+class Lexer:
+    def __init__(self, code: str = ""):
+        self.code = code
+        self.tokens = []
 
-    while pos < code_length:
-        # Handle newlines
-        if code[pos] == '\n':
-            line_num += 1
-            pos += 1
-            continue
+    def tokenize(self, code: str = None) -> List[Token]:
+        if code:
+            self.code = code
+        tokens = []
+        line_num = 1
+        pos = 0
+        code_length = len(self.code)
 
-        matched = False
-        for pattern, token_type in TOKEN_PATTERNS:
-            regex = re.compile(pattern)
-            match = regex.match(code, pos)
-            if match:
-                value = match.group(0)
-                if token_type:  # Not whitespace
-                    token_value = value
-                    # Check if identifier is actually a keyword
-                    if token_type == 'IDENTIFIER' and token_value.lower() in KEYWORDS:
-                        token_type = 'KEYWORD'
-                    tokens.append(Token(token_type, token_value, line_num, pos))
-                pos += len(value)
-                matched = True
-                break
+        while pos < code_length:
+            if self.code[pos] == '\n':
+                line_num += 1
+                pos += 1
+                continue
 
-        if not matched:
-            # Unknown character
-            tokens.append(Token('UNKNOWN', code[pos], line_num, pos))
-            pos += 1
+            matched = False
+            for pattern, token_type in TOKEN_PATTERNS:
+                regex = re.compile(pattern)
+                match = regex.match(self.code, pos)
+                if match:
+                    value = match.group(0)
+                    if token_type:
+                        token_value = value
+                        if token_type == 'IDENTIFIER' and token_value.lower() in KEYWORDS:
+                            token_type = 'KEYWORD'
+                        tokens.append(Token(token_type, token_value, line_num, pos))
+                    pos += len(value)
+                    matched = True
+                    break
 
-    tokens.append(Token('EOF'))
-    return tokens
+            if not matched:
+                tokens.append(Token('UNKNOWN', self.code[pos], line_num, pos))
+                pos += 1
+
+        tokens.append(Token('EOF'))
+        self.tokens = tokens
+        return tokens
 
 if __name__ == "__main__":
     test_code = '''
@@ -76,6 +80,7 @@ simulate {
     observe particle.position
 }
 '''
-    tokens = tokenize(test_code)
+    lexer = Lexer(test_code)
+    tokens = lexer.tokenize()
     for t in tokens:
         print(t)

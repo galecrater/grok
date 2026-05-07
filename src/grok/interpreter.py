@@ -1,31 +1,31 @@
-import ast
+# Interpreter for Grok Language
+
 from typing import Any, Dict
+from .ast import *
 
 class Interpreter:
     def __init__(self):
         self.environment: Dict[str, Any] = {}
 
-    def evaluate(self, node):
-        if isinstance(node, dict):  # Simple dict-based AST for now
-            if node.get('type') == 'LetStatement':
-                value = self.evaluate(node['value'])
-                self.environment[node['name']] = value
-                return value
-            elif node.get('type') == 'PrintStatement':
-                value = self.evaluate(node['value'])
-                print(value)
-                return value
-            elif node.get('type') == 'SimulateBlock':
-                print("[SIMULATE] Running simulation block...")
-                # TODO: Implement proper simulation later
-                for stmt in node.get('body', []):
-                    self.evaluate(stmt)
-                return None
-            elif node.get('type') == 'ProbabilityExpression':
-                # Simple stub
-                return 0.42  # placeholder
-        return node  # fallback
+    def evaluate(self, node: ASTNode):
+        if isinstance(node, Assignment):
+            # Stub assignment
+            self.environment["placeholder"] = "value"
+            print("[INTERPRET] Assignment executed")
+            return None
+        elif isinstance(node, SimulationBlock):
+            print("[SIMULATE] Running simulation block...")
+            for stmt in node.body:
+                self.evaluate(stmt)
+            return None
+        elif isinstance(node, ObserveStatement):
+            print("[OBSERVE] Observing target")
+            return None
+        elif isinstance(node, PrintStatement):
+            print("stub output")
+            return None
+        return node
 
-    def execute(self, ast_nodes):
+    def execute(self, ast_nodes: List[ASTNode]):
         for node in ast_nodes:
             self.evaluate(node)
