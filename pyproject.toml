@@ -1,17 +1,12 @@
 [project]
 name = "grok-lang"
 version = "0.1.0"
-description = "Grok — the programming language that understands the universe"
-readme = "README.md"
+description = "Grok - the programming language that understands the universe"
 requires-python = ">=3.12"
-license = {file = "LICENSE"}
-
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.ruff]
-line-length = 100
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
-addopts = ["-q", "--tb=no"]
+addopts = "--tb=short"
+markers = [
+    "unit"
+]
