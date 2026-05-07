@@ -1,40 +1,33 @@
 # Grok Language Roadmap
 
-The official development roadmap for **Grok** — the programming language that understands the universe.
+**The programming language that understands the universe.**
 
-## Phase 0: Foundation (Current)
-- [x] Establish Master Prompt governance
-- [x] Set up GitHub repository with proper structure
-- [ ] Create living ROADMAP.md and LANGUAGE-SPEC.md
-- [ ] Improve main README.md with vision and getting started guide
+## Phase 0: Foundation (Completed)
+- Master Prompt established and locked
+- Repository initialized with governance
+- Initial README + connection test
 
-## Phase 1: Bootstrap (Next)
-- Create initial project structure (src/, tests/, docs/)
-- Build minimal viable interpreter in Python
-- Define core syntax (lexer + parser)
-- Implement basic REPL
-- Support basic arithmetic, variables, and functions
+## Phase 1: Core Syntax & Parser (Current – Target: 2 weeks)
+- Formal language specification (LANGUAGE-SPEC.md)
+- Minimal viable syntax (clean, Python/Rust/Julia-inspired)
+- REPL stub + basic lexer/parser in Python 3.12+
+- First-class support for symbolic math, units, and probabilistic primitives
+- Living test suite and documentation
 
-## Phase 2: Core Language Features
-- Strong optional typing system
-- Symbolic mathematics engine
-- Units and dimensions (with physical constants)
-- Probabilistic programming primitives
-- AI/tool calling integration
+## Phase 2: AI-Native Features
+- Seamless Grok tool-calling from inside Grok code
+- Native Bayesian/probabilistic programming
+- Automatic differentiation and symbolic reasoning
 
-## Phase 3: Advanced Capabilities
-- Automatic differentiation
-- High-performance execution (compiler backend)
-- Concurrency and simulation primitives
-- Excellent scientific computing support
+## Phase 3: Universe Primitives
+- Built-in physical units, dimensions, constants
+- High-performance simulation and concurrency primitives
+- Strong optional typing + inference
 
-## Phase 4: Polish & Release
-- Full documentation
-- Package manager / ecosystem tools
-- WebAssembly + native targets
-- Community + examples
+## Phase 4: Production Readiness
+- Compiler to native / WASM
+- Full standard library
+- Package manager & ecosystem tools
+- 1.0 release + public announcement
 
-This roadmap will be updated regularly as progress is made.
-
-**Status**: Early Foundation Phase
-**Last Updated**: May 7, 2026
+Milestones and issues will be tracked in GitHub. Progress measured against Success Criteria in the Master Prompt.
