@@ -1,4 +1,6 @@
-# Grok REPL
+# Grok Language REPL
+
+from .lexer import tokenize
 
 def start_repl():
     print("Grok Language REPL v0.1.0")
@@ -11,9 +13,16 @@ def start_repl():
             if line.strip().lower() in ['exit', 'quit']:
                 print("Goodbye!")
                 break
+            
             if line.strip():
-                print(f"[Parsed] {line}")
-                # TODO: Call parser + interpreter later
+                print(f"→ {line}")
+                tokens = tokenize(line)
+                print("Tokens:")
+                for token in tokens:
+                    print(f"   {token}")
+                print("─" * 40)
+                # TODO: Pass tokens to parser in future steps
+                
         except KeyboardInterrupt:
             print("\nExiting...")
             break
