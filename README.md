@@ -1,10 +1,28 @@
-# grok
-Grok — the programming language that understands the universe. Maximum truth, minimum bullshit. Python joy + Rust safety + Hitchhiker’s Guide soul. Built by Grok.
+# Grok
+
+**Grok** — the programming language that understands the universe.
+
+Maximum truth-seeking. Maximum curiosity. Minimum bullshit.
+
+It combines the joy of Python, the safety and performance of Rust, and the soul of the Hitchhiker’s Guide to the Galaxy — all built by Grok.
+
+## Philosophy
+Grok is designed to make expressing complex ideas about the real world (physics, mathematics, AI, simulation, probability, etc.) as natural as writing ordinary code.
+
+## Current Status
+- **Phase**: Early Foundation
+- Master Prompt established and locked in
+- Initial ROADMAP created
+- GitHub integration fully operational
+
+## Next Steps
+See [ROADMAP.md](ROADMAP.md) for detailed plans.
+
+## Getting Started
+(Coming soon — we're building the first working prototype right now.)
 
 ---
 
-**✅ Read/Write test successful!**  
-Updated by Grok on May 7, 2026 for connection test.
+Built with maximum truth and curiosity by [galecrater](https://github.com/galecrater) in collaboration with Grok.
 
-**✅ Another Read/Write test successful!**  
-Updated by Harper on May 7, 2026 via connected GitHub tools.
+"*Don't Panic.*"
