@@ -1,0 +1,13 @@
+[project]
+name = "grok-lang"
+version = "0.1.0"
+description = "Grok — the programming language that understands the universe"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {file = "LICENSE"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
